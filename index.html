@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>零阑工坊 Nuln‑Studio</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, -apple-system, "PingFang SC", "Microsoft YaHei"}
+        body{background:#121419;color:#eee;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;
+            background-image:radial-gradient(ellipse at top, #1a1d2b 0%, #121419 60%)}
+        .wrap{text-align:center;max-width:680px;width:100%}
+        h1{font-size:44px;font-weight:600;margin-bottom:8px;color:#d4d2e4;letter-spacing:2px}
+        .en{font-size:17px;color:#7a7a90;margin-bottom:28px;letter-spacing:4px;font-weight:300}
+        .divider{width:48px;height:2px;background:linear-gradient(90deg, #8682b0, #c8c6d8);margin:0 auto 28px;border-radius:2px}
+        .desc{color:#9a9ab0;font-size:15px;line-height:1.9;margin-bottom:44px;font-weight:300}
+        .section-title{font-size:18px;color:#a8a6c8;margin:36px 0 14px;font-weight:500;letter-spacing:1px}
+        .section-title::before{content:"";display:inline-block;width:6px;height:6px;background:#8682b0;border-radius:50%;margin-right:10px;vertical-align:middle}
+        .btn-group{display:grid;grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));gap:10px;margin-bottom:8px}
+        a{display:block;text-decoration:none;padding:13px 10px;border-radius:8px;transition:0.25s;font-size:14px;font-weight:400}
+        .gitee-btn{color:#d8c8ff;border:1px solid #4a4468;background:#171a24}
+        .gitee-btn:hover{border-color:#9a8cd0;background:#1e2130;transform:translateY(-1px)}
+        .github-btn{color:#c0c8e0;border:1px solid #2a2e40;background:#151820}
+        .github-btn:hover{border-color:#7a82a8;background:#1b1f2c;transform:translateY(-1px)}
+        .tip{font-size:13px;color:#666;margin:6px 0 16px}
+        .footer{margin-top:56px;padding-top:28px;border-top:1px solid #262938}
+        .footer-email{font-size:14px;color:#7a7890;letter-spacing:0.5px}
+        .copyright{margin-top:16px;font-size:12px;color:#444}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>零阑工坊</h1>
+    <div class="en">NULN STUDIO</div>
+    <div class="divider"></div>
+    <div class="desc">
+        开源独立开发工坊｜专注 Python、Minecraft 启动器、工具类项目<br/>
+        国内访问推荐 Gitee，海外同步镜像为 GitHub
+    </div>
+
+    <h2 class="section-title">国内仓库（主力维护）</h2>
+    <div class="btn-group">
+        <a class="gitee-btn" href="https://gitee.com/nuln-studio/mcopen">MCOpen - Minecraft启动器</a>
+        <a class="gitee-btn" href="https://gitee.com/nuln-studio/CleanSlate">CleanSlate - 系统清理工具</a>
+        <a class="gitee-btn" href="https://gitee.com/nuln-studio/graph-vein">GraphVein - 逻辑导图编辑器</a>
+        <a class="gitee-btn" href="https://gitee.com/nuln-studio/">Gitee 组织主页</a>
+    </div>
+
+    <h2 class="section-title">海外镜像 GitHub（同步中）</h2>
+    <div class="tip">提示：GitHub 仓库正在同步完整代码，目前仅 MCOpen 可用</div>
+    <div class="btn-group">
+        <a class="github-btn" href="https://github.com/Nuln-Studio">GitHub 组织主页</a>
+        <a class="github-btn" href="https://github.com/Nuln-Studio/MCOpen">MCOpen（已同步）</a>
+    </div>
+
+    <div class="footer">
+        <div class="footer-email">联系邮箱：nuln_studio0707@163.com</div>
+        <div class="copyright">© 2026 Nuln Studio · 零阑工坊</div>
+    </div>
+</div>
+</body>
+</html>
