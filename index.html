@@ -7,9 +7,72 @@
     <link rel="icon" type="image/x-icon" href="2.ico">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, -apple-system, "PingFang SC", "Microsoft YaHei"}
-        body{background:#121419;color:#eee;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;
-            background-image:radial-gradient(ellipse at top, #1a1d2b 0%, #121419 60%)}
-        .wrap{text-align:center;max-width:680px;width:100%}
+        body{
+            background:#0a0c14;
+            color:#eee;
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            padding:32px 20px;
+            overflow:hidden;
+            position:relative;
+        }
+        body::before{
+            content:'';
+            position:fixed;
+            bottom:0;
+            left:50%;
+            width:300vw;
+            height:300vh;
+            transform:translateX(-50%);
+            transform-origin:bottom center;
+            background-image:
+                radial-gradient(1.5px 1.5px at 50px 40px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 150px 100px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 250px 60px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 350px 140px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.5px 1.5px at 450px 30px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 550px 110px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1.5px 1.5px at 650px 70px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 750px 150px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 80px 120px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 180px 50px, #fff, transparent),
+                radial-gradient(1px 1px at 280px 160px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 380px 90px, #fff, transparent),
+                radial-gradient(1px 1px at 480px 130px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 580px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 680px 120px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 780px 60px, #fff, transparent),
+                radial-gradient(1px 1px at 100px 200px, #fff, transparent),
+                radial-gradient(1px 1px at 200px 250px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 320px 220px, #fff, transparent),
+                radial-gradient(1px 1px at 420px 280px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 520px 200px, #fff, transparent),
+                radial-gradient(1px 1px at 620px 260px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 720px 230px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 130px 300px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1.5px 1.5px at 260px 340px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 400px 310px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.5px 1.5px at 530px 360px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 660px 320px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 780px 350px, #fff, transparent);
+            background-size: 800px 400px;
+            background-repeat: repeat;
+            animation: starRotate 360s linear infinite, twinkle 2.5s ease-in-out infinite alternate;
+            z-index:0;
+            pointer-events:none;
+        }
+        @keyframes starRotate {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+        @keyframes twinkle {
+            0% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        .wrap{text-align:center;max-width:680px;width:100%;position:relative;z-index:1}
         h1{font-size:44px;font-weight:600;margin-bottom:8px;color:#d4d2e4;letter-spacing:2px}
         .en{font-size:17px;color:#7a7a90;margin-bottom:28px;letter-spacing:4px;font-weight:300}
         .divider{width:48px;height:2px;background:linear-gradient(90deg, #8682b0, #c8c6d8);margin:0 auto 28px;border-radius:2px}
@@ -18,10 +81,10 @@
         .section-title::before{content:"";display:inline-block;width:6px;height:6px;background:#8682b0;border-radius:50%;margin-right:10px;vertical-align:middle}
         .btn-group{display:grid;grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));gap:10px;margin-bottom:8px}
         a{display:block;text-decoration:none;padding:13px 10px;border-radius:8px;transition:0.25s;font-size:14px;font-weight:400}
-        .gitee-btn{color:#d8c8ff;border:1px solid #4a4468;background:#171a24}
-        .gitee-btn:hover{border-color:#9a8cd0;background:#1e2130;transform:translateY(-1px)}
-        .github-btn{color:#c0c8e0;border:1px solid #2a2e40;background:#151820}
-        .github-btn:hover{border-color:#7a82a8;background:#1b1f2c;transform:translateY(-1px)}
+        .gitee-btn{color:#d8c8ff;border:1px solid #4a4468;background:rgba(23,26,36,0.6)}
+        .gitee-btn:hover{border-color:#9a8cd0;background:rgba(30,33,48,0.8);transform:translateY(-1px)}
+        .github-btn{color:#c0c8e0;border:1px solid #2a2e40;background:rgba(21,24,32,0.6)}
+        .github-btn:hover{border-color:#7a82a8;background:rgba(27,31,44,0.8);transform:translateY(-1px)}
         .tip{font-size:13px;color:#666;margin:6px 0 16px}
         .footer{margin-top:56px;padding-top:28px;border-top:1px solid #262938}
         .footer-email{font-size:14px;color:#7a7890;letter-spacing:0.5px}
@@ -37,22 +100,20 @@
         开源独立开发工坊｜专注 Python、Minecraft 启动器、工具类项目<br/>
         国内访问推荐 Gitee，海外同步镜像为 GitHub
     </div>
-
     <h2 class="section-title">国内仓库（主力维护）</h2>
     <div class="btn-group">
+        <a class="gitee-btn" href="https://gitee.com/nuln-studio/">Gitee 组织主页</a>
         <a class="gitee-btn" href="https://gitee.com/nuln-studio/mcopen">MCOpen - Minecraft启动器</a>
         <a class="gitee-btn" href="https://gitee.com/nuln-studio/CleanSlate">CleanSlate - 系统清理工具</a>
         <a class="gitee-btn" href="https://gitee.com/nuln-studio/graph-vein">GraphVein - 逻辑导图编辑器</a>
-        <a class="gitee-btn" href="https://gitee.com/nuln-studio/">Gitee 组织主页</a>
     </div>
-
-    <h2 class="section-title">海外镜像 GitHub（同步中）</h2>
-    <div class="tip">提示：GitHub 仓库正在同步完整代码，目前仅 MCOpen 可用</div>
+    <h2 class="section-title">海外镜像 GitHub</h2>
     <div class="btn-group">
         <a class="github-btn" href="https://github.com/Nuln-Studio">GitHub 组织主页</a>
-        <a class="github-btn" href="https://github.com/Nuln-Studio/MCOpen">MCOpen（已同步）</a>
+        <a class="github-btn" href="https://github.com/Nuln-Studio/MCOpen">MCOpen - Minecraft启动器</a>
+        <a class="github-btn" href="https://github.com/Nuln-Studio/CleanSlate">CleanSlate - 系统清理工具</a>
+        <a class="github-btn" href="https://github.com/Nuln-Studio/GraphVein">GraphVein - 逻辑导图编辑器</a>
     </div>
-
     <div class="footer">
         <div class="footer-email">联系邮箱：nuln_studio0707@163.com</div>
         <div class="copyright">© 2026 Nuln Studio · 零阑工坊</div>
