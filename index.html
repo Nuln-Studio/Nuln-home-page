@@ -3,37 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>零阑工坊 Nuln‑Studio</title>
+    <title>零阑工坊 Nuln-Studio</title>
     <link rel="icon" type="image/x-icon" href="2.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
-    <h1>零阑工坊</h1>
-    <div class="en">NULN STUDIO</div>
-    <div class="divider"></div>
-    <div class="desc">
-        开源独立开发工坊｜专注 Python、Minecraft 启动器、工具类项目<br/>
-        国内访问推荐 Gitee，海外同步镜像为 GitHub
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="2.png" alt="Nuln Studio" class="nav-logo-img">
+                Nuln Studio
+            </a>
+            
+            <div class="nav-links">
+                <a href="official-repos.html" class="nav-link">官方仓库</a>
+                <a href="DownloadInGitHub.html" class="nav-link">下载我们的产品</a>
+            </div>
+        </div>
+    </nav>
+    <div class="wrap">
+        <header class="brand">
+            <h1>零阑工坊</h1>
+            <div class="en">NULN STUDIO</div>
+            <div class="divider"></div>
+            <p class="tagline">开源独立开发工坊 · 专注 Python 开源工具与游戏启动器</p>
+        </header>
+        <section class="about-section">
+            <h2>关于我们</h2>
+            <p>零阑工坊（Nuln Studio）是一个由独立开发者组成的开源团队，以实用、精简、开放为核心理念。所有项目均遵循 <strong>GPL-3.0 协议</strong> 开源，在 Gitee 与 GitHub 上同步维护。</p>
+            <p>团队目前由三人组成，我们欢迎新开发者加入</p>
+        </section>
+        <section class="projects-section">
+            <h2>当前维护项目</h2>
+            <div class="project-item">
+                <h3>MCOpen(MCO)</h3>
+                <p class="project-status status-dev">开发中</p>
+                <p>简约开源的 Minecraft Java 版启动器，纯净无广告。兼容 Forge / Fabric / NeoForge，支持离线与正版登录（开发中）</p>
+            </div>
+            <div class="project-item">
+                <h3>CleanSlate(白板)</h3>
+                <p class="project-status status-stable">正式版 v1.0.3</p>
+                <p>基于 Python 的命令行 C 盘清理工具，绿色免安装。清理完成后，系统盘就像一块全新的白板。支持补丁系统，使用 yaml 配置文件</p>
+            </div>
+            <div class="project-item">
+                <h3>GraphVein(GV)</h3>
+                <p class="project-status status-dev">开发中</p>
+                <p>基于 Python 与 PySide6 的树形逻辑导图编辑器。已完成底层画布交互（平移、缩放、节点拖拽）与 GUI 框架</p>
+            </div>
+        </section>
+        <section class="team-section">
+            <h2>核心成员</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="b.png" alt="Bohh" class="team-avatar-img">
+                    <h3>Bohh</h3>
+                    <p class="team-role">创始人 & 核心开发</p>
+                    <p class="team-desc">架构设计、前端/后端开发、代码审查</p>
+                </div>
+                <div class="team-card">
+                        <img src="h.png" alt="Xin_Rail" class="team-avatar-img">
+                        <h3>Xin_Rail</h3>
+                        <p class="team-role">运维 & 测试 & 后端开发</p>
+                        <p class="team-desc">自动化构建、版本发布测试、项目宣传、部分后端开发</p>
+                </div>
+                <div class="team-card">
+                    <img src="y.png" alt="元" class="team-avatar-img">
+                    <h3>元</h3>
+                    <p class="team-role">生态 & 运维</p>
+                    <p class="team-desc">模组生态、社区维护、项目宣传</p>
+                </div>
+                
+            </div>
+        </section>
+        <section class="join-section">
+            <h2>加入我们</h2>
+            <p>团队无年龄限制，暂无薪资报酬，只要认同我们的开发准则即可参与，欢迎通过邮箱联系我们
+            </p>
+            <p>↓↓↓↓↓</p>
+        </section>
+        
+        <footer class="footer">
+            <div class="footer-email">联系邮箱：nuln_studio0707@163.com</div>
+            <div class="copyright">© 2026 Nuln Studio · 零阑工坊</div>
+        </footer>
     </div>
-    <h2 class="section-title">国内仓库 Gitee</h2>
-    <div class="btn-group">
-        <!-- <a class="gitee-btn" href="https://gitee.com/nuln-studio/">Gitee 组织主页</a> -->
-        <a class="gitee-btn" href="https://gitee.com/nuln-studio/mcopen">MCOpen - Minecraft启动器</a>
-        <a class="gitee-btn" href="https://gitee.com/nuln-studio/CleanSlate">CleanSlate - 系统清理工具</a>
-        <a class="gitee-btn" href="https://gitee.com/nuln-studio/graph-vein">GraphVein - 逻辑导图编辑器</a>
-    </div>
-    <h2 class="section-title">海外镜像 GitHub</h2>
-    <div class="btn-group">
-        <!-- <a class="github-btn" href="https://github.com/Nuln-Studio">GitHub 组织主页</a> -->
-        <a class="github-btn" href="https://github.com/Nuln-Studio/MCOpen">MCOpen - Minecraft启动器</a>
-        <a class="github-btn" href="https://github.com/Nuln-Studio/CleanSlate">CleanSlate - 系统清理工具</a>
-        <a class="github-btn" href="https://github.com/Nuln-Studio/GraphVein">GraphVein - 逻辑导图编辑器</a>
-    </div>
-    <div class="footer">
-        <div class="footer-email">联系邮箱：nuln_studio0707@163.com</div>
-        <div class="copyright">© 2026 Nuln Studio · 零阑工坊</div>
-    </div>
-</div>
 </body>
 </html>
