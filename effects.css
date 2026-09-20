@@ -1,0 +1,80 @@
+#bg-canvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+    opacity:0;
+    animation:canvasFadeIn 1.4s ease 0.2s forwards;
+}
+@keyframes canvasFadeIn{from{opacity:0;}to{opacity:1;}}
+body{overflow-x:hidden;}
+.repos-page,.download-page{position:relative;z-index:1;}
+.brand h1,.brand .en{
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    font-size:40px;
+    letter-spacing:2px;
+    background:linear-gradient(120deg,#e6e2ff 0%,#b3a9e8 45%,#8f87c8 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+}
+.brand .divider{
+    margin-top:8px;
+    background:linear-gradient(90deg,#8682b0,#d8c8ff,#8682b0);
+    background-size:200% 100%;
+    animation:dividerFlow 4s linear infinite;
+}
+@keyframes dividerFlow{from{background-position:0% 0;}to{background-position:200% 0;}}
+.navbar{transition:background 0.3s ease,box-shadow 0.3s ease;}
+.navbar.scrolled{
+    background:rgba(8,10,18,0.88);
+    box-shadow:0 8px 32px rgba(0,0,0,0.35);
+}
+.reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 0.4s cubic-bezier(0.22,0.61,0.36,1),transform 0.4s cubic-bezier(0.22,0.61,0.36,1);
+    will-change:opacity,transform;
+}
+.reveal.in-view{opacity:1;transform:none;}
+.project-item:hover,.team-card:hover,.repo-card:hover,.download-card:hover{
+    border-color:rgba(216,200,255,0.28);
+    box-shadow:0 0 0 1px rgba(216,200,255,0.08),0 14px 44px -14px rgba(134,130,176,0.45);
+}
+.download-btn{position:relative;overflow:hidden;}
+.download-btn::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    background:linear-gradient(90deg,transparent,rgba(216,200,255,0.35),transparent);
+    transform:translateX(-120%);
+    transition:transform 0.6s ease;
+}
+.download-btn:hover::before{transform:translateX(120%);}
+.download-btn:hover{box-shadow:0 0 24px rgba(134,130,176,0.35);}
+.copyright{color:#57576e;}
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-track{background:#0a0c14;}
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(180deg,#2a2e40,#3a3654);
+    border-radius:5px;
+    border:2px solid #0a0c14;
+}
+::-webkit-scrollbar-thumb:hover{background:#4a4468;}
+::selection{
+    background:rgba(216,200,255,0.28);
+    color:#ffffff;
+}
+@media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    #bg-canvas{animation:none;opacity:1;}
+    .brand .divider,.download-btn::before{animation:none;}
+}

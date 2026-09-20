@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>下载 - Nuln Studio</title>
     <link rel="icon" type="image/x-icon" href="2.ico">
+    <link rel="stylesheet" href="effects.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="/" class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <img src="2.webp" alt="Nuln Studio" class="nav-logo-img">
                 Nuln Studio
             </a>
@@ -21,32 +23,27 @@
         </div>
     </nav>
     <div class="download-page">
-        <h1>下载中心</h1>
-        <p class="download-sub">所有项目仅通过 GitHub Releases 提供正式版本</p>
-        <div class="download-grid">
-            <div class="download-card">
-                <h2>MCOpen(暂不可用)</h2>
-                <p>开源 Minecraft 启动器（项目大重构无版本可用）</p>
-                <p>最新版本：无</p>
-                <a href="https://github.com/Nuln-Studio/MCOpen/releases" target="_blank" class="download-btn">前往 GitHub 下载</a>
-            </div>
+        <h1 class="reveal">下载中心</h1>
+        <p class="download-sub reveal">所有项目仅通过 GitHub Releases 提供正式版本</p>
+        <div class="download-grid reveal">
             <div class="download-card">
                 <h2>CleanSlate</h2>
                 <p>C盘清理工具，专治系统盘爆满</p>
-                <p>最新版本：v1.0.3正式版</p>
+                <p>最新版本：v1.0.4正式版</p>
                 <a href="https://github.com/Nuln-Studio/CleanSlate/releases" target="_blank" class="download-btn">前往 GitHub 下载</a>
             </div>
             <div class="download-card">
-                <h2>GraphVein</h2>
-                <p>树形逻辑导图编辑器</p>
-                <p>最新版本：v0.1 Beta版</p>
-                <a href="https://github.com/Nuln-Studio/GraphVein/releases" target="_blank" class="download-btn">前往 GitHub 下载</a>
+                <h2>CleanSlate.CsGUI(暂不可用)</h2>
+                <p>基于 C# 的 CleanSlate 图形用户界面版本</p>
+                <p>最新版本：无</p>
+                <a href="https://github.com/Nuln-Studio/CleanSlate.CsGUI/releases" target="_blank" class="download-btn">前往 GitHub 下载</a>
             </div>
         </div>
-        <div class="download-footer">
+        <div class="download-footer reveal">
             <p>所有软件均开源免费，您可放心使用</p>
             <p style="margin-top:16px;"><a href="index.html">← 返回首页</a></p>
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>
