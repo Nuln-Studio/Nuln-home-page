@@ -7,6 +7,8 @@
     <link rel="icon" type="image/x-icon" href="2.ico">
     <link rel="stylesheet" href="effects.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="prefetch" href="official-repos.html">
+    <link rel="prefetch" href="DownloadInGitHub.html">
 </head>
 <body>
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -51,25 +53,25 @@
             <h2>核心成员</h2>
             <div class="team-grid">
                 <div class="team-card">
-                    <img src="b.png" alt="Bohh" class="team-avatar-img">
+                    <img src="b.png" alt="Bohh" class="team-avatar-img" loading="lazy">
                     <h3>Bohh</h3>
                     <p class="team-role">创始人 & 核心开发</p>
                     <p class="team-desc">架构设计、前端/后端开发、版本发布测试、官网开发、代码审查</p>
                 </div>
                 <div class="team-card">
-                        <img src="h.png" alt="Xin_Rail" class="team-avatar-img">
+                        <img src="h.png" alt="Xin_Rail" class="team-avatar-img" loading="lazy">
                         <h3>Xin_Rail</h3>
                         <p class="team-role">运维 & 测试 & 后端开发</p>
                         <p class="team-desc">自动化构建、版本发布测试、项目宣传、部分后端开发、官网开发、代码审查</p>
                 </div>
                 <div class="team-card">
-                    <img src="m.webp" alt="Cjx" class="team-avatar-img">
+                    <img src="m.webp" alt="Cjx" class="team-avatar-img" loading="lazy">
                     <h3>Cjx</h3>
                     <p class="team-role">后端开发</p>
                     <p class="team-desc">后端开发、部分架构设计、版本发布、代码审查</p>
                 </div>
                 <div class="team-card">
-                    <img src="y.webp" alt="元" class="team-avatar-img">
+                    <img src="y.webp" alt="元" class="team-avatar-img" loading="lazy">
                     <h3>元</h3>
                     <p class="team-role">生态 & 运维</p>
                     <p class="team-desc">模组生态、社区维护、项目宣传</p>
@@ -84,9 +86,9 @@
         </section>
         <footer class="footer reveal">
             <div class="footer-email">联系邮箱：nuln_studio0707@163.com</div>
-            <div class="copyright">© 2026 Nuln Studio · 零阑工坊</div>
+            <div class="copyright">© <span id="year"></span> Nuln Studio · 零阑工坊</div>
         </footer>
     </div>
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
 </body>
 </html>

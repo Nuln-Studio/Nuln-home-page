@@ -396,3 +396,8 @@ section p strong{color:#d8c8ff;}
     vertical-align:middle;
     margin-right:8px;
 }
+@media(max-width:640px){
+  .team-grid{
+    grid-template-columns:1fr;
+  }
+}

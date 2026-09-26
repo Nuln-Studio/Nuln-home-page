@@ -410,7 +410,6 @@ initMeteors();
 initPlanet();
 if(reduceMotion){draw(0);}else{rafId=requestAnimationFrame(frame);}
 }
-
 var revealEls=document.querySelectorAll('.reveal');
 if(revealEls.length){
 revealEls.forEach(function(el){
@@ -437,7 +436,6 @@ revealEls.forEach(function(el){io.observe(el);});
 revealEls.forEach(function(el){el.classList.add('in-view');});
 }
 }
-
 (function loopTyping(){
 var h1El=document.querySelector('.brand h1');
 var enEl=document.querySelector('.brand .en');
@@ -451,7 +449,6 @@ return;
 }
 h1El.textContent='';
 enEl.textContent='';
-
 function runCycle(){
 var posZh=0;
 var posEn=0;
@@ -495,7 +492,6 @@ typeZh();
 }
 runCycle();
 })();
-
 var coarse=window.matchMedia('(pointer:coarse)').matches;
 if(!reduceMotion&&!coarse){
 document.querySelectorAll('.team-card,.repo-card,.download-card').forEach(function(card){
@@ -512,7 +508,6 @@ card.style.transform='';
 });
 });
 }
-
 var nav=document.querySelector('.navbar');
 if(nav){
 function onScroll(){
@@ -520,5 +515,9 @@ nav.classList.toggle('scrolled',window.scrollY>8);
 }
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
+}
+var yearSpan=document.getElementById('year');
+if(yearSpan){
+yearSpan.textContent=new Date().getFullYear();
 }
 })();
