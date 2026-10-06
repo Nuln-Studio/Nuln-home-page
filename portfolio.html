@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品集 | 零阑工坊 Nuln‑Studio</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/x-icon" href="2.ico">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="2.webp" alt="Nuln Studio" class="nav-logo-img">
+                Nuln Studio
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">返回主页</a>
+            </div>
+        </div>
+    </nav>
+    <div class="wrap">
+        <header class="brand">
+            <h1 class="reveal">个人作品集</h1>
+            <div class="en reveal">Portfolio</div>
+            <div class="divider reveal"></div>
+            <p class="tagline reveal">团队成员个人作品展示</p>
+        </header>
+
+        <section class="portfolio-member reveal">
+            <div class="portfolio-member-info">
+                <h2>Bohh</h2>
+                <p>创始人</p>
+            </div>
+            <div class="portfolio-works">
+                <div class="portfolio-work">
+                    <span class="work-tag">闭源免费</span>
+                    <h3>《怨·悔》</h3>
+                    <p>校园中式恐怖游戏，使用Unity引擎与C#开发，目前未发布</p>
+                    <a href="EEG.HTML?from=ghost" class="download-btn">暂无渠道下载</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-member reveal">
+            <div class="portfolio-member-info">
+                <h2>元</h2>
+                <p>生态</p>
+            </div>
+            <div class="portfolio-works">
+                <div class="portfolio-work">
+                    <span class="work-tag">开源</span>
+                    <h3>《飞机大战》</h3>
+                    <p>一个基于pygame开发的飞行射击小游戏</p>
+                    <button class="download-btn repo-trigger"
+                            data-gitee="https://gitee.com/javapythondf/plane-wars"
+                            data-github=""
+                            data-github-egg="EEG.HTML?from=plane">
+                        查看详情
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer reveal">
+            <div class="footer-note" style="margin-top: 15px; font-size: 12px; opacity: 0.6; color: #aaa; line-height: 1.5;">
+                <p>注：团队项目遵循 GPL-3.0 协议开源；个人作品展示区中，作品是否开源由作者本人自主决定，不受团队开源协议限制。</p>
+            </div>
+            <div class="copyright">© <span id="year"></span> Nuln Studio · 零阑工坊</div>
+        </footer>
+    </div>
+
+    <div class="repo-modal" id="repo-modal">
+        <div class="repo-modal-content">
+            <button class="repo-modal-close" aria-label="关闭">&times;</button>
+            <h3>选择平台</h3>
+            <p>选择你常用的平台以查看</p>
+            <div class="repo-modal-links">
+                <a href="#" class="repo-modal-gitee" data-platform="gitee">Gitee</a>
+                <a href="#" class="repo-modal-github" data-platform="github">GitHub</a>
+            </div>
+            <p class="repo-modal-tip"></p>
+        </div>
+    </div>
+
+    <script>
+    (function(){
+        var modal = document.getElementById('repo-modal');
+        var giteeLink = modal.querySelector('.repo-modal-gitee');
+        var githubLink = modal.querySelector('.repo-modal-github');
+        var closeBtn = modal.querySelector('.repo-modal-close');
+        var tip = modal.querySelector('.repo-modal-tip');
+        var triggers = document.querySelectorAll('.repo-trigger');
+
+        var current = { gitee:'', github:'', giteeEgg:'', githubEgg:'' };
+
+        function renderButtons(){
+            if (current.gitee){
+                giteeLink.textContent = 'Gitee';
+                giteeLink.classList.remove('empty');
+            } else {
+                giteeLink.textContent = 'Gitee 暂无';
+                giteeLink.classList.add('empty');
+            }
+            if (current.github){
+                githubLink.textContent = 'GitHub';
+                githubLink.classList.remove('empty');
+            } else {
+                githubLink.textContent = 'GitHub 暂无';
+                githubLink.classList.add('empty');
+            }
+        }
+
+        function openModal(btn){
+            current.gitee = btn.dataset.gitee || '';
+            current.github = btn.dataset.github || '';
+            current.giteeEgg = btn.dataset.giteeEgg || '';
+            current.githubEgg = btn.dataset.githubEgg || '';
+            tip.textContent = '';
+            renderButtons();
+            modal.classList.add('active');
+        }
+
+        function handleClick(platform){
+            var url = current[platform];
+            var egg = current[platform + 'Egg'];
+            if (url){
+                window.open(url, '_blank', 'noopener');
+            } else if (egg){
+                window.location.href = egg;
+            } else {
+                tip.textContent = (platform === 'gitee' ? 'Gitee' : 'GitHub') + ' 平台暂未上架，敬请期待';
+            }
+        }
+
+        triggers.forEach(function(btn){
+            btn.addEventListener('click', function(){ openModal(btn); });
+        });
+
+        giteeLink.addEventListener('click', function(e){
+            e.preventDefault();
+            handleClick('gitee');
+        });
+        githubLink.addEventListener('click', function(e){
+            e.preventDefault();
+            handleClick('github');
+        });
+
+        function closeModal(){
+            modal.classList.remove('active');
+        }
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e){
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', function(e){
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+    })();
+    </script>
+    <script src="main.js" defer></script>
+</body>
+</html>

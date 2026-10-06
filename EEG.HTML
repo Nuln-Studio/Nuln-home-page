@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>？？？</title>
+</head>
+<body>
+    <h1 id="line1"></h1>
+    <h2 id="line2"></h2>
+    <p style="margin-top:20px;">
+        <a href="EEG2.HTML" class="download-btn">查看详情</a>
+    </p>
+    <p style="margin-top:20px;">
+        <a href="portfolio.html" class="download-btn">我不看了，我要回家~</a>
+    </p>
+    <script>
+        var from = new URLSearchParams(location.search).get('from');
+        var l1 = document.getElementById('line1');
+        var l2 = document.getElementById('line2');
+
+        switch (from) {
+            case 'ghost':
+                l1.textContent = '明明都写了暂无，还是执意点进来，前辈真是固执呢~❤️';
+                l2.textContent = '既然这么执着，那就给你看看吧，';
+                break;
+            case 'plane':
+                l1.textContent = '咦？明明写了 GitHub 没有，前辈还是点进来了呢~❤️';
+                l2.textContent = '它还没开源到 GitHub，不过 Gitee 上有，';
+                break;
+            case 'gitee':
+                l1.textContent = '仓库都摆在那了，前辈还点这里，真是杂鱼呢~❤️';
+                l2.textContent = '好吧好吧，既然都来了，那就，';
+                break;
+            default:
+                l1.textContent = '咦？你是怎么进来的？';
+                l2.textContent = '地址栏乱敲的吧，前辈真是闲得慌呢~❤️';
+        }
+    </script>
+</body>
+</html>
