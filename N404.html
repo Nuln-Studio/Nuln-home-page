@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>？？？</title>
+</head>
+<!----
+<h1>
+    前辈，来这干嘛？❤️
+    <br>为了看这个页面吗？你真是个固执的家伙呢~
+    <br>不过，我们确实没有在 Gitee 上开源官网代码，
+    <br>所以，你点进来也是白费力气的哦~
+
+</h1>
+---->
+<body>
+    <h1 id ="line1"></h1>
+    <h1 id ="line2"></h1>
+    <h1 id ="line3"></h1>
+    <h1 id ="line4"></h1>
+    <script>
+        var from = new URLSearchParams(location.search).get('from');
+        var l1 = document.getElementById('line1');
+        var l2 = document.getElementById('line2');
+        var l3 = document.getElementById('line3');
+        var l4 = document.getElementById('line4');
+
+        switch (from) {
+            case 'gitee':
+                l1.textContent = '前辈，来这干嘛？❤️';
+                l2.textContent = '为了看这个页面吗？你真是个固执的家伙呢~';
+                l3.textContent = '不过，我们确实没有在 Gitee 上开源官网代码，';
+                l4.textContent = '所以，你点进来也是白费力气的哦~';
+                break;
+            default:
+                l1.textContent = '咦？你是怎么进来的？';
+                l2.textContent = '地址栏乱敲的吧，前辈真是闲得慌呢~❤️';
+        }
+    </script>
+</body>
+<p style="margin-top:20px;">
+    <a href="portfolio.html" class="download-btn">回家啦~</a>
+</p>
