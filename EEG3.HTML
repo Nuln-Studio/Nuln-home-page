@@ -51,8 +51,10 @@
     </p>
 
     <script>
+        var okok = "aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMUdKNDExeDdoNw==" //PHP是世界上最好的语言，我去不早说
         document.getElementById('lookBtn').addEventListener('click', function () {
-            window.open('https://www.bilibili.com/video/BV1GJ411x7h7', '_blank');
+            const url = decodeURIComponent(atob(okok));
+            window.open(url, '_blank');
         });
     </script>
 </body>
