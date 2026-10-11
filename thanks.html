@@ -183,12 +183,12 @@
         </div>
 
         <h1 class="thanks-title">感谢您下载我们的产品</h1>
-        <p class="thanks-sub">
+        <p class="thanks-sub" id="sub-line">
             即将跳转到 <strong id="target-name">GitHub</strong> 下载页<br>
             如果没有自动跳转，请点击下方按钮
         </p>
 
-        <div class="countdown-wrap">
+        <div class="countdown-wrap" id="countdown-wrap">
             <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="countdownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -203,7 +203,7 @@
         </div>
 
         <div class="thanks-actions">
-            <a id="goto-btn" href="https://github.com/Nuln-Studio/CleanSlate/releases"
+            <a id="goto-btn" href="#"
                class="download-btn">
                 立即前往 GitHub
             </a>
@@ -220,12 +220,22 @@
         (function () {
             var REPOS = {
                 'CleanSlate': {
+                    mode: 'redirect',
                     url: 'https://github.com/Nuln-Studio/CleanSlate/releases',
-                    name: 'CleanSlate'
+                    name: 'CleanSlate',
+                    buttonText: '立即前往 GitHub'
                 },
                 'CleanSlate.CsGUI': {
+                    mode: 'redirect',
                     url: 'https://github.com/Nuln-Studio/CleanSlate.CsGUI/releases',
-                    name: 'CleanSlate.CsGUI'
+                    name: 'CleanSlate.CsGUI',
+                    buttonText: '立即前往 GitHub'
+                },
+                'Nuln-ACT': {
+                    mode: 'download',
+                    url: 'act/Nuln-ACT-v1.0.8.zip',
+                    name: 'Nuln-ACT',
+                    buttonText: '立即下载'
                 }
             };
 
@@ -236,10 +246,34 @@
 
             var repoKey = getParam('repo') || 'CleanSlate';
             var repo = REPOS[repoKey] || REPOS['CleanSlate'];
-            var targetUrl = repo.url;
+            var isDownload = repo.mode === 'download';
 
             document.getElementById('target-name').textContent = repo.name;
-            document.getElementById('goto-btn').href = targetUrl;
+
+            var subLine = document.getElementById('sub-line');
+            if (isDownload) {
+                subLine.innerHTML =
+                    '即将下载 <strong>' + repo.name + '</strong> 安装包<br>' +
+                    '如果没有自动开始，请点击下方按钮';
+            } else {
+                subLine.innerHTML =
+                    '即将跳转到 <strong>' + repo.name + '</strong> 下载页<br>' +
+                    '如果没有自动跳转，请点击下方按钮';
+            }
+
+            var gotoBtn = document.getElementById('goto-btn');
+            gotoBtn.textContent = repo.buttonText;
+            gotoBtn.href = repo.url;
+            if (isDownload) gotoBtn.setAttribute('download', '');
+
+            function triggerDownload(url) {
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = '';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
 
             var TOTAL = 5;
             var remain = TOTAL;
@@ -247,10 +281,33 @@
 
             var countdownEl = document.getElementById('countdown');
             var ringEl = document.getElementById('ring');
+            var wrapEl = document.getElementById('countdown-wrap');
+            var cancelBtn = document.getElementById('cancel-btn');
             var CIRCUMFERENCE = 2 * Math.PI * 42;
 
             ringEl.style.strokeDasharray = CIRCUMFERENCE;
             ringEl.style.strokeDashoffset = '0';
+
+            function finish() {
+                if (isDownload) {
+                    triggerDownload(repo.url);
+                    wrapEl.innerHTML =
+                        '<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">' +
+                        '  <circle cx="48" cy="48" r="42" fill="none" ' +
+                        '          stroke="#8682b0" stroke-width="3"/>' +
+                        '  <polyline points="32 48 44 60 64 38" fill="none" ' +
+                        '            stroke="#d8c8ff" stroke-width="4" ' +
+                        '            stroke-linecap="round" stroke-linejoin="round"/>' +
+                        '</svg>';
+                    subLine.innerHTML =
+                        '<strong>' + repo.name + '</strong> 下载已开始<br>' +
+                        '请留意浏览器下载栏，或点击下方按钮重新下载';
+                    cancelBtn.disabled = true;
+                    cancelBtn.textContent = '已完成';
+                } else {
+                    window.location.href = repo.url;
+                }
+            }
 
             function tick() {
                 if (canceled) return;
@@ -259,7 +316,7 @@
                 if (remain <= 0) {
                     countdownEl.textContent = '0';
                     ringEl.style.strokeDashoffset = CIRCUMFERENCE;
-                    window.location.href = targetUrl;
+                    finish();
                     return;
                 }
 
@@ -270,7 +327,7 @@
 
             setTimeout(tick, 1000);
 
-            document.getElementById('cancel-btn').addEventListener('click', function () {
+            cancelBtn.addEventListener('click', function () {
                 canceled = true;
                 countdownEl.textContent = '—';
                 ringEl.style.strokeDashoffset = CIRCUMFERENCE;
