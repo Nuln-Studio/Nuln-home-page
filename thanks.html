@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>感谢下载 - Nuln Studio</title>
+    <link rel="icon" type="image/x-icon" href="2.ico">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="prefetch" href="index.html">
+    <link rel="prefetch" href="DownloadInGitHub.html">
+    <style>
+        .thanks-page {
+            max-width: 640px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .thanks-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #b3a9e8, #8682b0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            box-shadow: 0 8px 32px rgba(134, 130, 176, 0.45);
+        }
+
+        .thanks-icon svg {
+            width: 44px;
+            height: 44px;
+            stroke: #f0ecff;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .thanks-title {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #d4d2e4;
+            margin-bottom: 14px;
+        }
+
+        .thanks-sub {
+            font-size: 15px;
+            color: #9a9ab0;
+            line-height: 1.85;
+            margin-bottom: 36px;
+        }
+
+        .thanks-sub strong {
+            color: #d8c8ff;
+            font-weight: 500;
+        }
+
+        .countdown-wrap {
+            position: relative;
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 32px;
+        }
+
+        .countdown-wrap svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .countdown-track {
+            fill: none;
+            stroke: rgba(216, 200, 255, 0.1);
+            stroke-width: 3;
+        }
+
+        .countdown-progress {
+            fill: none;
+            stroke: url(#countdownGrad);
+            stroke-width: 3;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s linear;
+            transform: rotate(-90deg);
+            transform-origin: 48px 48px;
+        }
+
+        .countdown-num {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            font-weight: 600;
+            color: #d8c8ff;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 1px;
+        }
+
+        .thanks-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .thanks-actions .download-btn {
+            padding: 12px 32px;
+            font-size: 15px;
+        }
+
+        .btn-ghost {
+            padding: 12px 32px;
+            border-radius: 9999px;
+            font-size: 15px;
+            font-family: inherit;
+            cursor: pointer;
+            background: transparent;
+            color: #9a9ab0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.25s;
+        }
+
+        .btn-ghost:hover {
+            color: #d4d2e4;
+            border-color: rgba(216, 200, 255, 0.32);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .btn-ghost:disabled {
+            cursor: default;
+            opacity: 0.45;
+        }
+
+        .thanks-hint {
+            font-size: 13px;
+            color: #7a7a90;
+            margin: 0;
+        }
+
+        .thanks-hint a {
+            color: #a8a6c8;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(168, 166, 200, 0.4);
+            transition: 0.2s;
+        }
+
+        .thanks-hint a:hover {
+            color: #d8c8ff;
+            border-bottom-color: #d8c8ff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="2.webp" alt="Nuln Studio" class="nav-logo-img">
+                Nuln Studio
+            </a>
+            <div class="nav-links">
+                <a href="portfolio.html" class="nav-link" style="opacity:0.65;font-size:14px;">个人作品集</a>
+                <a href="official-repos.html" class="nav-link">官方仓库</a>
+                <a href="DownloadInGitHub.html" class="nav-link active">下载我们的产品</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="thanks-page">
+        <div class="thanks-icon">
+            <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+
+        <h1 class="thanks-title">感谢您下载我们的产品</h1>
+        <p class="thanks-sub">
+            即将跳转到 <strong id="target-name">GitHub</strong> 下载页<br>
+            如果没有自动跳转，请点击下方按钮
+        </p>
+
+        <div class="countdown-wrap">
+            <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="countdownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%"   stop-color="#d8c8ff"/>
+                        <stop offset="100%" stop-color="#8682b0"/>
+                    </linearGradient>
+                </defs>
+                <circle class="countdown-track" cx="48" cy="48" r="42"/>
+                <circle class="countdown-progress" id="ring" cx="48" cy="48" r="42"/>
+            </svg>
+            <div class="countdown-num" id="countdown">5</div>
+        </div>
+
+        <div class="thanks-actions">
+            <a id="goto-btn" href="https://github.com/Nuln-Studio/CleanSlate/releases"
+               class="download-btn">
+                立即前往 GitHub
+            </a>
+            <button id="cancel-btn" class="btn-ghost">取消自动跳转</button>
+        </div>
+
+        <p class="thanks-hint">
+            遇到问题？<a href="DownloadInGitHub.html">返回下载中心</a>
+        </p>
+    </div>
+
+    <script src="main.js" defer></script>
+    <script>
+        (function () {
+            var REPOS = {
+                'CleanSlate': {
+                    url: 'https://github.com/Nuln-Studio/CleanSlate/releases',
+                    name: 'CleanSlate'
+                },
+                'CleanSlate.CsGUI': {
+                    url: 'https://github.com/Nuln-Studio/CleanSlate.CsGUI/releases',
+                    name: 'CleanSlate.CsGUI'
+                }
+            };
+
+            function getParam(name) {
+                var m = new RegExp('[?&]' + name + '=([^&]*)').exec(location.search);
+                return m ? decodeURIComponent(m[1]) : '';
+            }
+
+            var repoKey = getParam('repo') || 'CleanSlate';
+            var repo = REPOS[repoKey] || REPOS['CleanSlate'];
+            var targetUrl = repo.url;
+
+            document.getElementById('target-name').textContent = repo.name;
+            document.getElementById('goto-btn').href = targetUrl;
+
+            var TOTAL = 5;
+            var remain = TOTAL;
+            var canceled = false;
+
+            var countdownEl = document.getElementById('countdown');
+            var ringEl = document.getElementById('ring');
+            var CIRCUMFERENCE = 2 * Math.PI * 42;
+
+            ringEl.style.strokeDasharray = CIRCUMFERENCE;
+            ringEl.style.strokeDashoffset = '0';
+
+            function tick() {
+                if (canceled) return;
+                remain--;
+
+                if (remain <= 0) {
+                    countdownEl.textContent = '0';
+                    ringEl.style.strokeDashoffset = CIRCUMFERENCE;
+                    window.location.href = targetUrl;
+                    return;
+                }
+
+                countdownEl.textContent = remain;
+                ringEl.style.strokeDashoffset = CIRCUMFERENCE * (1 - remain / TOTAL);
+                setTimeout(tick, 1000);
+            }
+
+            setTimeout(tick, 1000);
+
+            document.getElementById('cancel-btn').addEventListener('click', function () {
+                canceled = true;
+                countdownEl.textContent = '—';
+                ringEl.style.strokeDashoffset = CIRCUMFERENCE;
+                this.textContent = '已取消';
+                this.disabled = true;
+            });
+        })();
+    </script>
+</body>
+</html>
