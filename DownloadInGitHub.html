@@ -42,11 +42,11 @@
                 <p>最新版本：无</p>
                 <a href="T404.HTML" class="download-btn" style="opacity:0.7;">暂不可用</a>
             </div>
-                <div class="download-card">
+            <div class="download-card">
                 <h2>Nuln ACT</h2>
                 <p>零阑工坊官方加速器，仅供零阑工坊官网加速使用</p>
                 <p>最新版本：v1.0.8</p>
-                <a href="thanks.html?repo=Nuln-ACT" class="download-btn">下载加速器</a>
+                <button class="download-btn act-trigger">下载加速器</button>
             </div>
         </div>
         <div class="download-footer reveal">
@@ -54,6 +54,47 @@
             <p style="margin-top:16px;"><a href="index.html">← 返回首页</a></p>
         </div>
     </div>
+
+    <div class="repo-modal" id="act-modal">
+        <div class="repo-modal-content">
+            <button class="repo-modal-close" aria-label="关闭">&times;</button>
+            <h3>选择下载方式</h3>
+            <p>官网直链 或 云盘 ？</p>
+            <div class="repo-modal-links">
+                <a href="thanks.html?repo=Nuln-ACT" class="repo-modal-gitee">官网下载</a>
+                <a href="thanks.html?repo=Nuln-ACT-Pan" class="repo-modal-github">123云盘</a>
+            </div>
+            <p class="repo-modal-tip"></p>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var modal = document.getElementById('act-modal');
+        var triggers = document.querySelectorAll('.act-trigger');
+        var closeBtn = modal.querySelector('.repo-modal-close');
+
+        function openModal() {
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        triggers.forEach(function (btn) {
+            btn.addEventListener('click', openModal);
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+    })();
+    </script>
     <script src="main.js" defer></script>
 </body>
 </html>

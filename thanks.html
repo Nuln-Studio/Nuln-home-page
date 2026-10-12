@@ -236,6 +236,14 @@
                     url: 'act/Nuln-ACT-v1.0.8.zip',
                     name: 'Nuln-ACT',
                     buttonText: '立即下载'
+                },
+                'Nuln-ACT-Pan': {
+                    mode: 'redirect',
+                    url: 'https://1841510051.share.123pan.cn/123pan/vLbDTd-l8aX?pwd=nuln',
+                    name: '123云盘',
+                    buttonText: '立即前往 123云盘',
+                    subText: '即将跳转到 <strong>123云盘-下载页</strong><br>' +
+                             '提取码：nuln 需要登录账号后下载'
                 }
             };
 
@@ -251,7 +259,9 @@
             document.getElementById('target-name').textContent = repo.name;
 
             var subLine = document.getElementById('sub-line');
-            if (isDownload) {
+            if (repo.subText) {
+                subLine.innerHTML = repo.subText;
+            } else if (isDownload) {
                 subLine.innerHTML =
                     '即将下载 <strong>' + repo.name + '</strong> 安装包<br>' +
                     '如果没有自动开始，请点击下方按钮';
