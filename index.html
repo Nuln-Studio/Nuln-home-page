@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>零阑工坊 Nuln‑Studio</title>
+    <title>零阑工坊 Nuln Studio</title>
     <link rel="icon" type="image/x-icon" href="2.ico">
     <link rel="stylesheet" href="effects.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="prefetch" href="official-repos.html">
-    <link rel="prefetch" href="DownloadInGitHub.html">
 </head>
-<body>
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<body class="layout-split">
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -19,87 +16,118 @@
                 Nuln Studio
             </a>
             <div class="nav-links">
-                <a href="portfolio.html" class="nav-link" style="opacity:0.65;font-size:14px;">个人作品集</a>
+                <a href="portfolio.html" class="nav-link">个人作品集</a>
                 <a href="official-repos.html" class="nav-link">官方仓库</a>
-                <a href="DownloadInGitHub.html" class="nav-link">下载我们的产品</a>
-               
+                <a href="DownloadInGitHub.html" class="nav-link">下载产品</a>
             </div>
         </div>
     </nav>
-    <div class="wrap">
-        <header class="brand">
-            <h1 class="reveal">零阑工坊</h1>
-            <div class="en reveal">Nuln Studio</div>
-            <div class="divider reveal"></div>
-            <p class="tagline reveal">开源独立开发工坊 · 专注 Python 开源工具与游戏启动器</p>
-        </header>
-        <section class="about-section reveal">
-            <h2>关于我们</h2>
-            <p>零阑工坊（Nuln Studio）是一个由独立开发者组成的开源团队，以实用、精简、开放为核心理念。所有项目均遵循 <strong>GPL‑3.0 协议</strong> 开源，在 Gitee 与 GitHub 上同步维护。</p>
-            <p>团队目前由四人组成，我们欢迎新开发者加入</p>
-        </section>
-        <section class="projects-section reveal">
-            <h2>维护项目</h2>
-            <div class="project-item">
-                <h3>CleanSlate(白板)</h3>
-                <p class="project-status status-stable">正式版 v1.0.5</p>
-                <p>基于 Python 的命令行 C 盘清理工具，绿色免安装。清理完成后，系统盘就像一块全新的白板。支持补丁系统，使用 yaml 配置文件</p>
-            </div>
-            <div class="project-item">
-                <h3>CleanSlate.CsGUI(白板图形界面版)</h3>
-                <p class="project-status status-dev">开发中</p>
-                <p>基于 C# & Python 的 CleanSlate 图形用户界面版本</p>
-            </div>
-        </section>
-        <section class="team-section reveal">
-            <h2>核心成员</h2>
-            <div class="team-grid">
-                <div class="team-card">
-                    <img src="b.png" alt="Bohh" class="team-avatar-img" loading="lazy">
-                    <h3>Bohh</h3>
-                    <p class="team-role">创始人 & 核心开发</p>
-                    <p class="team-desc">架构设计、前端/后端开发、版本发布测试、代码审查</p>
-                </div>
-                <div class="team-card">
-                        <img src="h.png" alt="Xin_Rail" class="team-avatar-img" loading="lazy">
-                        <h3>Xin_Rail</h3>
-                        <p class="team-role">运维 & 测试 & 后端开发</p>
-                        <p class="team-desc">自动化构建、版本发布测试、项目宣传、部分后端开发、代码审查</p>
-                </div>
-                <div class="team-card">
-                    <img src="m.webp" alt="Cjx" class="team-avatar-img" loading="lazy">
-                    <h3>Cjx</h3>
-                    <p class="team-role">后端开发</p>
-                    <p class="team-desc">后端开发、部分架构设计、版本发布、代码审查</p>
-                </div>
-                <div class="team-card">
-                    <img src="y.webp" alt="元" class="team-avatar-img" loading="lazy">
-                    <h3>元</h3>
-                    <p class="team-role">生态 & 运维</p>
-                    <p class="team-desc">模组生态、社区维护、项目宣传</p>
-                </div>
-            </div>
-            <!---
-                <a href="portfolio.html" style="display:inline-block;margin-top:10px;font-size:13px;color:#7b9cff;text-decoration:none;opacity:0.8;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">查看团队个人作品 →</a>
-        --->
-        </section>
-        <section class="present plan-section reveal">
-            <h2>当前正在做什么...</h2>
-            <p>CleanSlate.CsGUI开发中..
-            官网暂提供仓库入口，可通过Gitee/GitHub官方组织页前往查看</p>
 
-        </section>
-        <section class="join-section reveal">
-            
-            <h2>加入我们</h2>
-            <p>团队无年龄限制，暂无薪资报酬，只要认同我们的开发准则即可参与，欢迎通过邮箱联系我们
-            </p>
-            <p>↓↓↓↓↓</p>
-        </section>
-        <footer class="footer reveal">
-            <div class="footer-email">联系邮箱：nuln_studio0707@163.com</div>
-            <div class="copyright">© <span id="year"></span> Nuln Studio · 零阑工坊</div>
-        </footer>
+    <div class="split-container">
+        <aside class="hero-side reveal">
+            <h1 class="reveal" data-text="零阑工坊">零阑工坊</h1>
+            <p class="hero-en">NULN STUDIO</p>
+            <p class="hero-desc">开源独立开发工坊。<br>专注 Python 开源工具与游戏启动器。</p>
+            <div class="hero-meta">
+                <span>GPL-3.0 协议</span>
+                <span>4 名核心成员</span>
+            </div>
+        </aside>
+
+        <main class="content-side">
+            <section class="reveal">
+                <h2>关于我们</h2>
+                <p class="text-large">以实用、精简、开放为核心理念。所有项目均遵循 GPL‑3.0 协议开源，在 Gitee 与 GitHub 上同步维护。我们欢迎新开发者加入。</p>
+            </section>
+
+            <section class="reveal">
+                <h2>维护项目</h2>
+                <div class="bento-list">
+                    <div class="bento-item">
+                        <div class="bento-header">
+                            <h3>CleanSlate (白板)</h3>
+                            <span class="status-dot stable"></span>
+                        </div>
+                        <p>基于 Python 的命令行 C 盘清理工具，绿色免安装。清理完成后，系统盘就像一块全新的白板。支持补丁系统，使用 yaml 配置文件。</p>
+                        
+                        <div style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="version-tag" style="margin-top: 0;">v1.0.5 正式版</span>
+                            <a href="CleanSlate.html" style="display: inline-flex; align-items: center; padding: 8px 16px; background: #f3f4f6; color: #111; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.2s;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">
+                                查看产品发布页
+                                <svg style="margin-left: 6px; width: 14px; height: 14px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bento-item">
+                        <div class="bento-header">
+                            <h3>CleanSlate.CsGUI</h3>
+                            <span class="status-dot dev"></span>
+                        </div>
+                        <p>基于 C# & Python 的 CleanSlate 图形用户界面版本。</p>
+                        
+                        <div style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="version-tag" style="margin-top: 0;">开发中</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2>核心成员</h2>
+                <div class="team-list">
+                    <div class="team-member">
+                        <img src="b.png" alt="Bohh">
+                        <div class="member-info">
+                            <h3>Bohh</h3>
+                            <span>创始人 & 核心开发</span>
+                            <p>架构设计、前后端开发、发布测试、代码审查</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="h.png" alt="Xin_Rail">
+                        <div class="member-info">
+                            <h3>Xin_Rail</h3>
+                            <span>运维 & 测试 & 后端开发</span>
+                            <p>自动化构建、测试、项目宣传、部分后端开发</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="m.webp" alt="Cjx">
+                        <div class="member-info">
+                            <h3>Cjx</h3>
+                            <span>后端开发</span>
+                            <p>后端开发、部分架构设计、版本发布</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="y.webp" alt="元">
+                        <div class="member-info">
+                            <h3>元</h3>
+                            <span>生态 & 运维</span>
+                            <p>模组生态、社区维护、项目宣传</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <h2>动态与加入</h2>
+                <div class="bento-item">
+                    <h3>当前正在做什么...</h3>
+                    <p>CleanSlate.CsGUI 开发中。官网暂提供仓库入口，可通过 Gitee/GitHub 官方组织页前往查看。</p>
+                </div>
+                <div class="bento-item">
+                    <h3>加入我们</h3>
+                    <p>团队无年龄限制，暂无薪资报酬，只要认同我们的开发准则即可参与。欢迎联系：<strong>nuln_studio0707@163.com</strong></p>
+                </div>
+            </section>
+
+            <footer class="footer reveal">
+                <p>© <span id="year"></span> Nuln Studio · 零阑工坊</p>
+            </footer>
+        </main>
     </div>
     <script src="main.js" defer></script>
 </body>

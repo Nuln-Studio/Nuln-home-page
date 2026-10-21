@@ -7,11 +7,8 @@
     <link rel="icon" type="image/x-icon" href="2.ico">
     <link rel="stylesheet" href="effects.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="prefetch" href="index.html">
-    <link rel="prefetch" href="official-repos.html">
 </head>
-<body>
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<body class="layout-centered">
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -19,82 +16,45 @@
                 Nuln Studio
             </a>
             <div class="nav-links">
-                <a href="portfolio.html" class="nav-link" style="opacity:0.65;font-size:14px;">个人作品集</a>
+                <a href="portfolio.html" class="nav-link">个人作品集</a>
                 <a href="official-repos.html" class="nav-link">官方仓库</a>
-                <a href="DownloadInGitHub.html" class="nav-link active">下载我们的产品</a>
+                <a href="DownloadInGitHub.html" class="nav-link active">下载产品</a>
             </div>
         </div>
     </nav>
-    <div class="download-page">
-        <h1 class="reveal">下载中心</h1>
-        <p class="download-sub reveal">所有项目仅通过 GitHub Releases 提供正式版本</p>
-        <div class="download-grid reveal">
 
-            <div class="download-card">
-                <h2>CleanSlate</h2>
-                <p>C盘清理工具，专治系统盘爆满</p>
-                <p>最新版本：v1.0.5正式版</p>
-                <a href="thanks.html?repo=CleanSlate" class="download-btn">前往 GitHub 下载</a>
-            </div>
-            <div class="download-card">
-                <h2>CleanSlate.CsGUI(暂不可用)</h2>
-                <p>基于 C# 的 CleanSlate 图形用户界面版本</p>
-                <p>最新版本：无</p>
-                <a href="T404.HTML" class="download-btn" style="opacity:0.7;">暂不可用</a>
-            </div>
-            <div class="download-card">
-                <h2>Nuln ACT</h2>
-                <p>零阑工坊官方加速器，仅供零阑工坊官网加速使用</p>
-                <p>最新版本：v1.0.8</p>
-                <button class="download-btn act-trigger">下载加速器</button>
-            </div>
+    <div class="page-header reveal">
+        <h1>下载中心</h1>
+        <p>所有项目均通过 GitHub Releases 提供正式版本</p>
+    </div>
+
+    <div class="bento-grid reveal">
+        <div class="bento-card col-span-2 highlight-card">
+            <h2>CleanSlate</h2>
+            <p class="card-desc">C 盘清理工具，专治系统盘爆满。</p>
+            <div class="card-meta">最新版本：v1.0.5 正式版</div>
+            <a href="thanks.html?repo=CleanSlate" class="btn-primary">前往 GitHub 下载</a>
         </div>
-        <div class="download-footer reveal">
-            <p>所有软件均开源(或部分开源)、免费，您可放心使用</p>
-            <p style="margin-top:16px;"><a href="index.html">← 返回首页</a></p>
+
+        <div class="bento-card">
+            <h2>CleanSlate.CsGUI</h2>
+            <p class="card-desc">基于 C# 的 CleanSlate 图形用户界面版本。</p>
+            <div class="card-meta">状态：暂不可用</div>
+            <a href="T404.HTML" class="btn-secondary">暂未发布</a>
+        </div>
+
+        <div class="bento-card">
+            <h2>Nuln-ACT</h2>
+            <p class="card-desc">零阑工坊官网加速器。</p>
+            <div class="card-meta">最新版本：v1.0.8</div>
+            <a href="thanks.html?repo=Nuln-ACT" class="btn-secondary">下载加速器</a>
         </div>
     </div>
 
-    <div class="repo-modal" id="act-modal">
-        <div class="repo-modal-content">
-            <button class="repo-modal-close" aria-label="关闭">&times;</button>
-            <h3>选择下载方式</h3>
-            <p>官网直链 或 云盘 ？</p>
-            <div class="repo-modal-links">
-                <a href="thanks.html?repo=Nuln-ACT" class="repo-modal-gitee">官网下载</a>
-                <a href="thanks.html?repo=Nuln-ACT-Pan" class="repo-modal-github">123云盘</a>
-            </div>
-            <p class="repo-modal-tip"></p>
-        </div>
+    <div class="page-footer reveal">
+        <p>所有软件均开源(或部分开源)、免费，您可放心使用</p>
+        <a href="index.html" class="btn-text">← 返回首页</a>
     </div>
-
-    <script>
-    (function () {
-        var modal = document.getElementById('act-modal');
-        var triggers = document.querySelectorAll('.act-trigger');
-        var closeBtn = modal.querySelector('.repo-modal-close');
-
-        function openModal() {
-            modal.classList.add('active');
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-        }
-
-        triggers.forEach(function (btn) {
-            btn.addEventListener('click', openModal);
-        });
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) closeModal();
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-        });
-    })();
-    </script>
     <script src="main.js" defer></script>
 </body>
 </html>

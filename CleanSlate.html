@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CleanSlate Intro</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #f8fafc;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "MiSans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ambient-light {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, rgba(147,51,234,0.08) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 0;
+    animation: rotateLight 20s linear infinite;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: translateY(-20px);
+}
+
+.wrap {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 24px;
+}
+
+.icon {
+    width: 160px;
+    height: 160px;
+    background: url("app.webp") no-repeat center / contain;
+    filter: drop-shadow(0 25px 35px rgba(56, 189, 248, 0.3)); 
+    transform: translateY(200px) scale(0.8);
+    opacity: 0;
+    animation: iconPop 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s forwards;
+}
+
+.title-main {
+        font-size: 82px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #1e293b 30%, #3b82f6 70%, #8b5cf6 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-blur {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateX(-40px);
+    animation: titleSlideIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.6s forwards;
+}
+
+.sub-title {
+    font-size: 32px;
+    color: #64748b;
+    font-weight: 500;
+    letter-spacing: 4px;
+    margin-bottom: 60px;
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(20px);
+    animation: textFadeUp 1s ease-out 1.4s forwards;
+}
+
+.features {
+    display: flex;
+    gap: 24px;
+}
+
+.feature-tag {
+    padding: 12px 36px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 40px;
+    font-size: 20px;
+    color: #334155;
+    font-weight: 600;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+}
+.feature-tag:nth-child(1) { animation: tagPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.2s forwards; }
+.feature-tag:nth-child(2) { animation: tagPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.4s forwards; }
+.feature-tag:nth-child(3) { animation: tagPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.6s forwards; }
+
+.footer-slogan {
+    position: absolute;
+    bottom: 60px;
+    font-size: 16px;
+    color: #94a3b8;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out 3.5s forwards;
+}
+
+.footer-slogan::before,
+.footer-slogan::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+}
+
+@keyframes iconPop { to { transform: translateY(0) scale(1); opacity: 1; } }
+@keyframes titleSlideIn { to { transform: translateX(0); opacity: 1; filter: blur(0); } }
+@keyframes textFadeUp { to { transform: translateY(0); opacity: 1; filter: blur(0); } }
+@keyframes tagPop { to { transform: translateY(0) scale(1); opacity: 1; } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes rotateLight { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+@media (max-width: 768px) {
+    .wrap { flex-direction: column; gap: 16px; }
+    .title-main { font-size: 48px; }
+    .sub-title { font-size: 20px; margin-bottom: 40px; }
+    .features { flex-direction: column; gap: 12px; }
+    .ambient-light { width: 400px; height: 400px; }
+}
+</style>
+</head>
+<body>
+<div class="ambient-light"></div>
+<div class="container">
+    <div class="wrap">
+        <div class="icon"></div>
+        <div class="title-blur">
+            <div class="title-main">CleanSlate</div>
+        </div>
+    </div>
+    <div class="sub-title">v1.0.5 正式版上线</div>
+    <div class="features">
+        <div class="feature-tag">开源</div>
+        <div class="feature-tag">绿色免安装</div>
+        <div class="feature-tag">支持扩展补丁</div>
+    </div>
+</div>
+<div class="footer-slogan">让 C 盘像白板一样干净 · 零阑工坊出品</div>
+</body>
+</html>

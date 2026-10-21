@@ -7,160 +7,111 @@
     <link rel="icon" type="image/x-icon" href="2.ico">
     <link rel="stylesheet" href="effects.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="prefetch" href="index.html">
-    <link rel="prefetch" href="DownloadInGitHub.html">
     <style>
         .thanks-page {
             max-width: 640px;
             width: 100%;
             margin: 0 auto;
-            padding: 40px 20px 60px;
+            padding: 120px 20px 60px;
             text-align: center;
             position: relative;
             z-index: 1;
         }
-
         .thanks-icon {
-            width: 88px;
-            height: 88px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #b3a9e8, #8682b0);
+            background: #111;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 32px;
-            box-shadow: 0 8px 32px rgba(134, 130, 176, 0.45);
         }
-
         .thanks-icon svg {
-            width: 44px;
-            height: 44px;
-            stroke: #f0ecff;
+            width: 36px;
+            height: 36px;
+            stroke: #fff;
             stroke-width: 3;
             fill: none;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
         .thanks-title {
             font-size: 32px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            color: #d4d2e4;
-            margin-bottom: 14px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #111;
+            margin-bottom: 12px;
         }
-
         .thanks-sub {
-            font-size: 15px;
-            color: #9a9ab0;
-            line-height: 1.85;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
             margin-bottom: 36px;
         }
-
         .thanks-sub strong {
-            color: #d8c8ff;
-            font-weight: 500;
+            color: #111;
+            font-weight: 600;
         }
-
         .countdown-wrap {
             position: relative;
             width: 96px;
             height: 96px;
             margin: 0 auto 32px;
         }
-
         .countdown-wrap svg {
             width: 100%;
             height: 100%;
             display: block;
         }
-
         .countdown-track {
             fill: none;
-            stroke: rgba(216, 200, 255, 0.1);
-            stroke-width: 3;
+            stroke: #f0f0f0;
+            stroke-width: 4;
         }
-
         .countdown-progress {
             fill: none;
-            stroke: url(#countdownGrad);
-            stroke-width: 3;
+            stroke: #111;
+            stroke-width: 4;
             stroke-linecap: round;
             transition: stroke-dashoffset 1s linear;
             transform: rotate(-90deg);
             transform-origin: 48px 48px;
         }
-
         .countdown-num {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 28px;
-            font-weight: 600;
-            color: #d8c8ff;
-            font-variant-numeric: tabular-nums;
-            letter-spacing: 1px;
+            font-weight: 800;
+            color: #111;
         }
-
         .thanks-actions {
             display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
+            gap: 16px;
             justify-content: center;
             margin-bottom: 32px;
         }
-
-        .thanks-actions .download-btn {
-            padding: 12px 32px;
-            font-size: 15px;
-        }
-
         .btn-ghost {
-            padding: 12px 32px;
-            border-radius: 9999px;
-            font-size: 15px;
-            font-family: inherit;
-            cursor: pointer;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
             background: transparent;
-            color: #9a9ab0;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            transition: 0.25s;
-        }
-
-        .btn-ghost:hover {
-            color: #d4d2e4;
-            border-color: rgba(216, 200, 255, 0.32);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .btn-ghost:disabled {
-            cursor: default;
-            opacity: 0.45;
-        }
-
-        .thanks-hint {
-            font-size: 13px;
-            color: #7a7a90;
-            margin: 0;
-        }
-
-        .thanks-hint a {
-            color: #a8a6c8;
-            text-decoration: none;
-            border-bottom: 1px dotted rgba(168, 166, 200, 0.4);
+            color: #666;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
             transition: 0.2s;
         }
-
-        .thanks-hint a:hover {
-            color: #d8c8ff;
-            border-bottom-color: #d8c8ff;
+        .btn-ghost:hover {
+            background: #f5f5f5;
+            color: #111;
         }
     </style>
 </head>
-<body>
+<body class="layout-centered">
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
-
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -168,18 +119,16 @@
                 Nuln Studio
             </a>
             <div class="nav-links">
-                <a href="portfolio.html" class="nav-link" style="opacity:0.65;font-size:14px;">个人作品集</a>
+                <a href="portfolio.html" class="nav-link">个人作品集</a>
                 <a href="official-repos.html" class="nav-link">官方仓库</a>
-                <a href="DownloadInGitHub.html" class="nav-link active">下载我们的产品</a>
+                <a href="DownloadInGitHub.html" class="nav-link active">下载产品</a>
             </div>
         </div>
     </nav>
 
     <div class="thanks-page">
         <div class="thanks-icon">
-            <svg viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
 
         <h1 class="thanks-title">感谢您下载我们的产品</h1>
@@ -190,12 +139,6 @@
 
         <div class="countdown-wrap" id="countdown-wrap">
             <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="countdownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%"   stop-color="#d8c8ff"/>
-                        <stop offset="100%" stop-color="#8682b0"/>
-                    </linearGradient>
-                </defs>
                 <circle class="countdown-track" cx="48" cy="48" r="42"/>
                 <circle class="countdown-progress" id="ring" cx="48" cy="48" r="42"/>
             </svg>
@@ -203,48 +146,19 @@
         </div>
 
         <div class="thanks-actions">
-            <a id="goto-btn" href="#"
-               class="download-btn">
-                立即前往 GitHub
-            </a>
+            <a id="goto-btn" href="#" class="btn-primary">立即前往 GitHub</a>
             <button id="cancel-btn" class="btn-ghost">取消自动跳转</button>
         </div>
-
-        <p class="thanks-hint">
-            遇到问题？<a href="DownloadInGitHub.html">返回下载中心</a>
-        </p>
     </div>
 
     <script src="main.js" defer></script>
     <script>
         (function () {
             var REPOS = {
-                'CleanSlate': {
-                    mode: 'redirect',
-                    url: 'https://github.com/Nuln-Studio/CleanSlate/releases',
-                    name: 'CleanSlate',
-                    buttonText: '立即前往 GitHub'
-                },
-                'CleanSlate.CsGUI': {
-                    mode: 'redirect',
-                    url: 'https://github.com/Nuln-Studio/CleanSlate.CsGUI/releases',
-                    name: 'CleanSlate.CsGUI',
-                    buttonText: '立即前往 GitHub'
-                },
-                'Nuln-ACT': {
-                    mode: 'download',
-                    url: 'act/Nuln-ACT-v1.0.8.zip',
-                    name: 'Nuln-ACT',
-                    buttonText: '立即下载'
-                },
-                'Nuln-ACT-Pan': {
-                    mode: 'redirect',
-                    url: 'https://1841510051.share.123pan.cn/123pan/vLbDTd-l8aX?pwd=nuln',
-                    name: '123云盘',
-                    buttonText: '立即前往 123云盘',
-                    subText: '即将跳转到 <strong>123云盘-下载页</strong><br>' +
-                             '提取码：nuln 需要登录账号后下载'
-                }
+                'CleanSlate': { mode: 'redirect', url: 'https://github.com/Nuln-Studio/CleanSlate/releases', name: 'CleanSlate', buttonText: '立即前往 GitHub' },
+                'CleanSlate.CsGUI': { mode: 'redirect', url: 'https://github.com/Nuln-Studio/CleanSlate.CsGUI/releases', name: 'CleanSlate.CsGUI', buttonText: '立即前往 GitHub' },
+                'Nuln-ACT': { mode: 'download', url: 'act/Nuln-ACT-v1.0.8.zip', name: 'Nuln-ACT', buttonText: '立即下载' },
+                'Nuln-ACT-Pan': { mode: 'redirect', url: 'https://1841510051.share.123pan.cn/123pan/vLbDTd-l8aX?pwd=nuln', name: '123云盘', buttonText: '立即前往 123云盘', subText: '即将跳转到 <strong>123云盘-下载页</strong><br>提取码：nuln 需要登录账号后下载' }
             };
 
             function getParam(name) {
@@ -262,13 +176,9 @@
             if (repo.subText) {
                 subLine.innerHTML = repo.subText;
             } else if (isDownload) {
-                subLine.innerHTML =
-                    '即将下载 <strong>' + repo.name + '</strong> 安装包<br>' +
-                    '如果没有自动开始，请点击下方按钮';
+                subLine.innerHTML = '即将下载 <strong>' + repo.name + '</strong> 安装包<br>如果没有自动开始，请点击下方按钮';
             } else {
-                subLine.innerHTML =
-                    '即将跳转到 <strong>' + repo.name + '</strong> 下载页<br>' +
-                    '如果没有自动跳转，请点击下方按钮';
+                subLine.innerHTML = '即将跳转到 <strong>' + repo.name + '</strong> 下载页<br>如果没有自动跳转，请点击下方按钮';
             }
 
             var gotoBtn = document.getElementById('goto-btn');
@@ -301,17 +211,8 @@
             function finish() {
                 if (isDownload) {
                     triggerDownload(repo.url);
-                    wrapEl.innerHTML =
-                        '<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">' +
-                        '  <circle cx="48" cy="48" r="42" fill="none" ' +
-                        '          stroke="#8682b0" stroke-width="3"/>' +
-                        '  <polyline points="32 48 44 60 64 38" fill="none" ' +
-                        '            stroke="#d8c8ff" stroke-width="4" ' +
-                        '            stroke-linecap="round" stroke-linejoin="round"/>' +
-                        '</svg>';
-                    subLine.innerHTML =
-                        '<strong>' + repo.name + '</strong> 下载已开始<br>' +
-                        '请留意浏览器下载栏，或点击下方按钮重新下载';
+                    wrapEl.innerHTML = '<svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="42" fill="none" stroke="#111" stroke-width="4"/><polyline points="32 48 44 60 64 38" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                    subLine.innerHTML = '<strong>' + repo.name + '</strong> 下载已开始<br>请留意浏览器下载栏';
                     cancelBtn.disabled = true;
                     cancelBtn.textContent = '已完成';
                 } else {
@@ -322,14 +223,12 @@
             function tick() {
                 if (canceled) return;
                 remain--;
-
                 if (remain <= 0) {
                     countdownEl.textContent = '0';
                     ringEl.style.strokeDashoffset = CIRCUMFERENCE;
                     finish();
                     return;
                 }
-
                 countdownEl.textContent = remain;
                 ringEl.style.strokeDashoffset = CIRCUMFERENCE * (1 - remain / TOTAL);
                 setTimeout(tick, 1000);

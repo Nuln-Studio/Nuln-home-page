@@ -7,11 +7,8 @@
     <link rel="icon" type="image/x-icon" href="2.ico">
     <link rel="stylesheet" href="effects.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="prefetch" href="index.html">
-    <link rel="prefetch" href="DownloadInGitHub.html">
 </head>
-<body>
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<body class="layout-centered">
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -19,37 +16,41 @@
                 Nuln Studio
             </a>
             <div class="nav-links">
-                <a href="portfolio.html" class="nav-link" style="opacity:0.65;font-size:14px;">个人作品集</a>
+                <a href="portfolio.html" class="nav-link">个人作品集</a>
                 <a href="official-repos.html" class="nav-link active">官方仓库</a>
-                <a href="DownloadInGitHub.html" class="nav-link">下载我们的产品</a>
+                <a href="DownloadInGitHub.html" class="nav-link">下载产品</a>
             </div>
         </div>
     </nav>
-    <div class="repos-page">
-        <h1 class="reveal">官方仓库</h1>
-        <p class="repos-sub reveal">所有项目源码托管于 Gitee，GitHub 为同步镜像</p>
-        <div class="repo-grid reveal">
-            <div class="repo-card">
-                <h2>CleanSlate</h2>
-                <p>C盘清理工具，专治系统盘爆满</p>
-                <div class="repo-links">
-                    <a href="https://gitee.com/nuln-studio/CleanSlate" target="_blank" class="repo-gitee">Gitee</a>
-                    <a href="https://github.com/Nuln-Studio/CleanSlate" target="_blank" class="repo-github">GitHub</a>
-                </div>
-            </div>
-            <div class="repo-card">
-                <h2>CleanSlate.CsGUI(白板图形界面版)</h2>
-                <p>基于 C# 的 CleanSlate 图形用户界面版本</p>
-                <div class="repo-links">
-                    <a href="https://gitee.com/nuln-studio/CleanSlate.CsGUI" target="_blank" class="repo-gitee">Gitee</a>
-                    <a href="https://github.com/Nuln-Studio/CleanSlate.CsGUI/tree/master" target="_blank" class="repo-github">GitHub</a>
-                </div>
+
+    <div class="page-header reveal">
+        <h1>官方仓库</h1>
+        <p>所有项目源码托管于 Gitee，GitHub 为同步镜像</p>
+    </div>
+
+    <div class="bento-grid reveal">
+        <div class="bento-card col-span-2">
+            <h2>CleanSlate</h2>
+            <p class="card-desc">C 盘清理工具，专治系统盘爆满。</p>
+            <div style="display: flex; gap: 12px;">
+                <a href="https://gitee.com/nuln-studio/CleanSlate" target="_blank" class="btn-primary">Gitee 仓库</a>
+                <a href="https://github.com/Nuln-Studio/CleanSlate" target="_blank" class="btn-secondary">GitHub 镜像</a>
             </div>
         </div>
-        <div class="repos-footer reveal">
-            <p>所有软件均开源(或部分开源)、免费，您可放心使用</p>
-            <p style="margin-top:16px;"><a href="index.html">← 返回首页</a></p>
+
+        <div class="bento-card col-span-2">
+            <h2>CleanSlate.CsGUI</h2>
+            <p class="card-desc">基于 C# 的 CleanSlate 图形用户界面版本。</p>
+            <div style="display: flex; gap: 12px;">
+                <a href="https://gitee.com/nuln-studio/CleanSlate.CsGUI" target="_blank" class="btn-primary">Gitee 仓库</a>
+                <a href="https://github.com/Nuln-Studio/CleanSlate.CsGUI" target="_blank" class="btn-secondary">GitHub 镜像</a>
+            </div>
         </div>
+    </div>
+
+    <div class="page-footer reveal">
+        <p>所有软件均开源(或部分开源)、免费，您可放心使用</p>
+        <a href="index.html" class="btn-text">← 返回首页</a>
     </div>
     <script src="main.js" defer></script>
 </body>

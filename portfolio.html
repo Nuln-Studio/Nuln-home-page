@@ -3,14 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人作品集 | 零阑工坊 Nuln‑Studio</title>
+    <title>个人作品集 | 零阑工坊</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/x-icon" href="2.ico">
     <link rel="stylesheet" href="effects.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .repo-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .repo-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .repo-modal-content {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: calc(100% - 40px);
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            transform: translateY(20px);
+            transition: 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        .repo-modal.active .repo-modal-content {
+            transform: translateY(0);
+        }
+        .repo-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 24px;
+            color: #9ca3af;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .repo-modal-close:hover {
+            color: #111;
+        }
+        .repo-modal-content h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #111;
+        }
+        .repo-modal-content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+        .repo-modal-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .repo-modal-links a {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f3f4f6;
+            color: #111;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .repo-modal-links a:hover {
+            background: #e5e7eb;
+        }
+        .repo-modal-links a.empty {
+            opacity: 0.5;
+            border: 1px dashed #ccc;
+            background: transparent;
+        }
+        .repo-modal-tip {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #ef4444;
+            min-height: 18px;
+        }
+    </style>
 </head>
-<body>
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<body class="layout-split">
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -18,80 +107,80 @@
                 Nuln Studio
             </a>
             <div class="nav-links">
-                <a href="index.html" class="nav-link">返回主页</a>
+                <a href="portfolio.html" class="nav-link active">个人作品集</a>
+                <a href="official-repos.html" class="nav-link">官方仓库</a>
+                <a href="DownloadInGitHub.html" class="nav-link">下载产品</a>
             </div>
         </div>
     </nav>
-    <div class="wrap">
-        <header class="brand">
-            <h1 class="reveal">个人作品集</h1>
-            <div class="en reveal">Portfolio</div>
-            <div class="divider reveal"></div>
-            <p class="tagline reveal">团队成员个人作品展示</p>
-        </header>
 
-        <section class="portfolio-member reveal">
-            <div class="portfolio-member-info">
+    <div class="split-container">
+        <aside class="hero-side reveal">
+            <h1 class="reveal" data-text="个人作品集">个人作品集</h1>
+            <p class="hero-en">PORTFOLIO</p>
+            <p class="hero-desc">团队成员个人作品展示。<br>部分作品开源，部分闭源。</p>
+        </aside>
+
+        <main class="content-side">
+            <section class="reveal">
                 <h2>Bohh & 潇梓</h2>
-                <p>创始人 & 神秘人(???)</p>
-            </div>
-            <div class="portfolio-works">
-                <div class="portfolio-work">
-                    <span class="work-tag">闭源免费</span>
-                    <h3>《囚·龛》</h3>
-                    <p>恐怖游戏，使用Unity引擎与C#开发，目前未发布</p>
-                    <a href="EEG.HTML?from=ghost" class="download-btn">暂无渠道下载</a>
+                <div class="bento-list">
+                    <div class="bento-item">
+                        <div class="bento-header">
+                            <h3>《囚·龛》</h3>
+                            <span class="version-tag">闭源免费</span>
+                        </div>
+                        <p>恐怖游戏，使用 Unity 引擎与 C# 开发，目前未发布。</p>
+                        <a href="EEG.HTML?from=ghost" class="btn-secondary" style="display: inline-block; margin-top: 16px; padding: 10px 24px;">暂无渠道下载</a>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="portfolio-member reveal">
-            <div class="portfolio-member-info">
+            <section class="reveal">
                 <h2>元</h2>
-                <p>生态</p>
-            </div>
-            <div class="portfolio-works">
-                <div class="portfolio-work">
-                    <span class="work-tag">开源</span>
-                    <h3>《打飞机》</h3>
-                    <p>一个基于pygame开发的飞行射击小游戏</p>
-                    <button class="download-btn repo-trigger"
-                            data-gitee="https://gitee.com/javapythondf/plane-wars"
-                            data-github="https://github.com/Airchinaup/PlaneWars"
-                            data-github-egg="EEG.HTML?from=plane">
-                        查看详情
-                    </button>
+                <div class="bento-list">
+                    <div class="bento-item">
+                        <div class="bento-header">
+                            <h3>《打飞机》</h3>
+                            <span class="version-tag">开源</span>
+                        </div>
+                        <p>一个基于 pygame 开发的飞行射击小游戏。</p>
+                        <button class="btn-secondary repo-trigger"
+                                data-gitee="https://gitee.com/javapythondf/plane-wars"
+                                data-github="https://github.com/Airchinaup/PlaneWars"
+                                data-github-egg="EEG.HTML?from=plane"
+                                style="margin-top: 16px;">
+                            查看详情
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section class="portfolio-member reveal">
-            <div class="portfolio-member-info">
-                <h2>Bohh 
-                    & Xin_Rail</h2>
-                <p>创始人 & 运维</p>
-            </div>
-            <div class="portfolio-works">
-                <div class="portfolio-work">
-                    <span class="work-tag">开源</span>
-                    <h3>零阑工坊-官网</h3>
-                    <p>官网从哪来？
-                        
-                    </p>
-                    <button class="download-btn repo-trigger"
-                            data-gitee=""
-                            data-github="https://github.com/Nuln-Studio/Nuln-home-page"
-                            data-gitee-egg="N404.html?from=gitee">
-                        查看详情
-                    </button>
+            </section>
+
+            <section class="reveal">
+                <h2>Bohh & Xin_Rail</h2>
+                <div class="bento-list">
+                    <div class="bento-item">
+                        <div class="bento-header">
+                            <h3>零阑工坊-官网</h3>
+                            <span class="version-tag">开源</span>
+                        </div>
+                        <p>官网从哪来？你猜猜看。</p>
+                        <button class="btn-secondary repo-trigger"
+                                data-gitee=""
+                                data-github="https://github.com/Nuln-Studio/Nuln-home-page"
+                                data-gitee-egg="N404.html?from=gitee"
+                                style="margin-top: 16px;">
+                            查看详情
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <footer class="footer reveal">
-            <div class="footer-note" style="margin-top: 15px; font-size: 12px; opacity: 0.6; color: #aaa; line-height: 1.5;">
-                <p>注：团队项目遵循 GPL-3.0 协议开源；个人作品展示区中，作品是否开源由作者本人自主决定，不受团队开源协议限制。</p>
-            </div>
-            <div class="copyright">© <span id="year"></span> Nuln Studio · 零阑工坊</div>
-        </footer>
+            </section>
+
+            <footer class="footer reveal">
+                <p style="font-size: 13px; color: #999; margin-bottom: 24px;">注：团队项目遵循 GPL-3.0 协议开源；个人作品展示区中，作品是否开源由作者本人自主决定，不受团队开源协议限制。</p>
+                <p>© <span id="year"></span> Nuln Studio · 零阑工坊</p>
+            </footer>
+        </main>
     </div>
 
     <div class="repo-modal" id="repo-modal">
