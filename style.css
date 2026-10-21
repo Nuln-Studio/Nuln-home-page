@@ -1,5 +1,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+:root {
+    color-scheme: light;
+}
+
 body { 
     background: #ffffff; 
     color: #111; 
@@ -16,8 +20,7 @@ body {
     align-items: center; 
     padding: 0 40px; 
     z-index: 100; 
-    background: rgba(255, 255, 255, 0.8); 
-    backdrop-filter: blur(12px); 
+    background: #ffffff; 
     border-bottom: 1px solid #f3f3f3; 
 }
 
@@ -72,7 +75,6 @@ body {
     position: relative;
 }
 
-/* 双层动态极光光晕 */
 .hero-side::before {
     content: "";
     position: absolute;
@@ -111,7 +113,6 @@ body {
     100% { transform: scale(1.3) translate(-15px, 20px); opacity: 0.9; }
 }
 
-
 .hero-side h1 { 
     font-size: 68px; 
     font-weight: 900; 
@@ -124,7 +125,6 @@ body {
     display: inline-block;
     filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.15)); 
 }
-
 
 .hero-side h1::after {
     content: attr(data-text); 
@@ -170,7 +170,6 @@ body {
     color: #888; 
     font-family: monospace; 
 }
-
 
 .content-side { 
     flex: 1; 
