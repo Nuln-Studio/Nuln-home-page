@@ -88,7 +88,7 @@
         document.head.appendChild(script);
 
         window.onloadTurnstileCallback = function() {
-            vStatus.innerText = "请完成人机验证";
+            vStatus.innerText = "请完成此人机验证";
             window.turnstile.render('#turnstile-container', {
                 sitekey: _siteKey,
                 theme: 'light',
