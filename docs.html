@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档中心 - Nuln Studio</title>
+    <link rel="icon" type="image/x-icon" href="2.ico">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .docs-shell {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 96px 24px 80px;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .docs-sidebar {
+            position: sticky;
+            top: 96px;
+            border: 1px solid #f0f0f0;
+            border-radius: 16px;
+            background: #fafafa;
+            padding: 16px;
+        }
+
+        .docs-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin-bottom: 14px;
+        }
+
+        .docs-search svg { flex: 0 0 auto; color: #aaa; }
+
+        .docs-search input {
+            border: 0;
+            outline: none;
+            width: 100%;
+            font: inherit;
+            font-size: 13px;
+            color: #111;
+            background: transparent;
+        }
+
+        .docs-tree { display: flex; flex-direction: column; gap: 2px; }
+
+        .tree-group { border-radius: 10px; overflow: hidden; }
+
+        .tree-folder {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 10px;
+            border: 0;
+            background: transparent;
+            border-radius: 10px;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .tree-folder:hover { background: #f0f0f0; }
+
+        .tree-folder.active { background: #111; color: #fff; }
+
+        .tree-folder.active .count { background: rgba(255, 255, 255, 0.18); color: #fff; }
+
+        .tree-folder .count {
+            margin-left: auto;
+            font-size: 11px;
+            font-family: monospace;
+            color: #888;
+            background: #eee;
+            border-radius: 20px;
+            padding: 1px 7px;
+        }
+
+        .tree-folder svg { flex: 0 0 auto; opacity: 0.75; }
+
+        .docs-sidebar-foot {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #999;
+            font-family: monospace;
+        }
+
+        .docs-main { min-width: 0; }
+
+        .docs-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .docs-crumb {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            color: #111;
+        }
+
+        .docs-crumb small {
+            display: block;
+            margin-top: 6px;
+            font-size: 13px;
+            font-weight: 400;
+            color: #888;
+            font-family: monospace;
+        }
+
+        .docs-list { display: flex; flex-direction: column; gap: 10px; }
+
+        .doc-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            border: 1px solid #f0f0f0;
+            border-radius: 14px;
+            background: #fff;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s;
+        }
+
+        .doc-row:hover {
+            border-color: #e0e0e0;
+            background: #fafafa;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .doc-icon {
+            flex: 0 0 auto;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: #f5f5f5;
+            color: #555;
+        }
+
+        .doc-icon.feishu { background: #eef4ff; color: #2b6cf6; }
+        .doc-icon.repo { background: #f0f0f0; color: #111; }
+        .doc-icon.note { background: #f6f1ff; color: #7c3aed; }
+
+        .doc-body { min-width: 0; flex: 1; }
+
+        .doc-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .doc-desc {
+            margin-top: 3px;
+            font-size: 13px;
+            color: #777;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .doc-badge {
+            font-size: 11px;
+            font-family: monospace;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: #f0f0f0;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .doc-badge.pending { background: #fff4e5; color: #b45309; }
+
+        .doc-arrow { flex: 0 0 auto; color: #bbb; }
+
+        .docs-empty {
+            padding: 60px 20px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            border: 1px dashed #e5e5e5;
+            border-radius: 14px;
+        }
+
+        @media (max-width: 860px) {
+            .docs-shell { grid-template-columns: 1fr; padding-top: 88px; }
+            .docs-sidebar { position: relative; top: 0; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <img src="2.webp" alt="Nuln Studio" class="nav-logo-img">
+            Nuln Studio
+        </a>
+        <div class="nav-links">
+            <a href="portfolio.html" class="nav-link">个人作品集</a>
+            <a href="official-repos.html" class="nav-link">官方仓库</a>
+            <a href="docs.html" class="nav-link active">文档中心</a>
+            <a href="DownloadInGitHub.html" class="nav-link">下载我们的产品</a>
+        </div>
+    </div>
+</nav>
+
+<div class="docs-shell">
+    <aside class="docs-sidebar">
+        <div class="docs-search">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="M20 20l-3.5-3.5"></path>
+            </svg>
+            <input id="q" type="search" placeholder="搜索文档…" autocomplete="off">
+        </div>
+        <nav class="docs-tree" id="tree"></nav>
+        <div class="docs-sidebar-foot">共 <span id="count">0</span> 篇 · 持续更新</div>
+    </aside>
+
+    <main class="docs-main">
+        <div class="docs-head">
+            <div class="docs-crumb" id="crumb">
+                全部文档
+                <small id="crumb-sub">点击左侧分类筛选，或直接搜索</small>
+            </div>
+        </div>
+        <div class="docs-list" id="list"></div>
+    </main>
+</div>
+
+<script>
+    /* =====================================================================
+       文档清单：改这里就行。
+       kind  : feishu（飞书） / repo（仓库 README） / note（站内或其它）
+       path  : 飞书文档路径（会拼在 FEISHU_BASE 后面）
+       url   : 也可以直接写完整链接，优先级高于 path
+       留空则显示「待补链接」标记，不会跳到死页面。
+       ===================================================================== */
+    const FEISHU_BASE = "https://my.feishu.cn/drive/folder/KQUTfZsjZlux03dpFeDcK27Yn3e";
+
+    const TREE = [
+        {
+            name: "项目规划",
+            desc: "各产品线的规划与接口约定",
+            items: [
+                { title: "CleanSlate_CsGUI 项目规划", desc: "CsGUI 版本的里程碑与模块划分", kind: "feishu", url: "https://my.feishu.cn/file/FRzBbRF7cowq21x0lCTcQt61nGf" },
+                { title: "CleanSlate.CsGUI Backend API", desc: "后端本地 HTTP 接口：端口、token 与扫描任务", kind: "feishu", url: "https://my.feishu.cn/file/FTS9b92avolPdsxv60RczhhKnRc" },
+                { title: "Nuitka++ 项目规划（新修订）", desc: "里程碑、模块划分与踩坑记录", kind: "feishu", url: "https://my.feishu.cn/file/QlMVbquvWolYfPxGb8scqoTRnBe" }
+            ]
+        },
+        {
+            name: "Nuitka++ 组件",
+            desc: "四个环境探测组件的设计说明",
+            items: [
+                { title: "python_discovery", desc: "解释器发现与探针", kind: "feishu", url: "https://my.feishu.cn/file/GTFZbM3yroQWHCxwKk7czcUAnwh" },
+                { title: "scannuitka", desc: "Nuitka 版本与 Python 矩阵", kind: "feishu", url: "https://my.feishu.cn/file/DQ4nbPmsHo8KRixdQcec0BKInIf" },
+                { title: "scanmsvc", desc: "MSVC 工具集探测", kind: "feishu", url: "https://my.feishu.cn/file/DQySb1eAHoShiVxiUcwc8ZnZnCz" },
+                { title: "scangcc", desc: "gcc 探测与 PATH 抢占", kind: "feishu", url: "https://my.feishu.cn/file/JUMpbayOloaHwaxyL1ycjE9Tnrd" }
+            ]
+        },
+        {
+            name: "通用",
+            desc: "仓库说明与文档入口",
+            items: [
+                { title: "README", desc: "白板 CleanSlate 的安装运行与常见问题", kind: "feishu", url: "https://my.feishu.cn/file/YTQ0b6tyeooiLcxTDQWcEw7Znwb" }
+            ]
+        }
+    ];
+
+    const ICONS = {
+        feishu: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>',
+        repo: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4a2 2 0 0 1 2-2h12v18H6a2 2 0 0 0-2 2z"/><path d="M4 18h14"/></svg>',
+        note: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12l-4 4H4z"/><path d="M16 20v-4h4"/></svg>'
+    };
+
+    const KIND_LABEL = { feishu: "飞书", repo: "README", note: "文档" };
+    const allItems = TREE.flatMap(g => g.items.map(it => ({ ...it, group: g.name })));
+    let active = null;
+    let keyword = "";
+
+    function linkOf(item) {
+        if (item.url) return item.url;
+        if (item.path) return FEISHU_BASE + item.path;
+        if (FEISHU_BASE && item.kind === "feishu") return FEISHU_BASE;
+        return "";
+    }
+
+    function renderTree() {
+        const tree = document.getElementById("tree");
+        tree.innerHTML = "";
+
+        const all = document.createElement("button");
+        all.className = "tree-folder" + (active ? "" : " active");
+        all.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>全部文档<span class="count">' + allItems.length + '</span>';
+        all.onclick = () => { active = null; renderTree(); renderList(); };
+        tree.appendChild(all);
+
+        TREE.forEach(group => {
+            const btn = document.createElement("button");
+            btn.className = "tree-folder" + (active === group.name ? " active" : "");
+            btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>' + group.name + '<span class="count">' + group.items.length + '</span>';
+            btn.onclick = () => { active = group.name; renderTree(); renderList(); };
+            tree.appendChild(btn);
+        });
+    }
+
+    function renderList() {
+        const list = document.getElementById("list");
+        const crumb = document.getElementById("crumb");
+        const crumbSub = document.getElementById("crumb-sub");
+        const group = TREE.find(g => g.name === active);
+
+        let items = allItems;
+        if (group) items = items.filter(it => it.group === group.name);
+        if (keyword) {
+            const k = keyword.toLowerCase();
+            items = items.filter(it =>
+                (it.title + it.desc + it.group).toLowerCase().includes(k)
+            );
+        }
+
+        crumb.childNodes[0].nodeValue = group ? group.name : "全部文档";
+        crumbSub.textContent = group ? group.desc : "点击左侧分类筛选，或直接搜索";
+        document.getElementById("count").textContent = items.length;
+
+        if (!items.length) {
+            list.innerHTML = '<div class="docs-empty">没有匹配的文档</div>';
+            return;
+        }
+
+        list.innerHTML = "";
+        items.forEach(it => {
+            const href = linkOf(it);
+            const badge = href
+                ? '<span class="doc-badge">' + (KIND_LABEL[it.kind] || "文档") + '</span>'
+                : '<span class="doc-badge pending">待补链接</span>';
+
+            const row = document.createElement(href ? "a" : "div");
+            row.className = "doc-row";
+            if (href) {
+                row.href = href;
+                row.target = "_blank";
+                row.rel = "noopener";
+            }
+            row.innerHTML =
+                '<div class="doc-icon ' + it.kind + '">' + (ICONS[it.kind] || ICONS.note) + '</div>' +
+                '<div class="doc-body">' +
+                    '<div class="doc-title">' + it.title + badge + '</div>' +
+                    '<div class="doc-desc">' + it.desc + '</div>' +
+                '</div>' +
+                (href ? '<svg class="doc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>' : '');
+
+            list.appendChild(row);
+        });
+    }
+
+    document.getElementById("q").addEventListener("input", e => {
+        keyword = e.target.value.trim();
+        renderList();
+    });
+
+    renderTree();
+    renderList();
+</script>
+<script src="main.js" defer></script>
+</body>
+</html>
